@@ -1,21 +1,21 @@
 # python3
-#import numpy as np
 
 def parallel_processing(n, m, data):
     output = []
     seconds = 0
     datacount = 0
     threads = [0]*n
-    #threads = np.zeros(n)
 
-    for i in range (m+1):
-        for i in range (n):
-            if threads[i] == 0:
-                output.append(i)
-                output.append(seconds)
-                threads[i] = data[datacount]
-                datacount = datacount+1
-            threads[i] = threads[i]-1
+    for i in range (m):
+        for j in range (n):
+            if threads[j] == 0:
+                if datacount < len(data):
+                    output.append(j)
+                    output.append(seconds)
+                    threads[j] = data[datacount]
+                    datacount = datacount+1
+                else: threads[j]=0
+            threads[j] = threads[j]-1
         seconds = seconds+1
                 
     # TODO: write the function for simulating parallel tasks, 
@@ -49,7 +49,7 @@ def main():
 
     # TODO: create the function
     result = parallel_processing(n,m,data)
-    print(result)
+    #print(result)
     for i in range(0, len(result), 2):
         print(result[i], end=' ')
         if i+1 < len(result):
