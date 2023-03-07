@@ -1,11 +1,12 @@
 # python3
-import numpy as np
+#import numpy as np
 
 def parallel_processing(n, m, data):
     output = []
     seconds = 0
     datacount = 0
-    threads = np.zeros(n)
+    threads = [0]*n
+    #threads = np.zeros(n)
 
     for i in range (m+1):
         for i in range (n):
